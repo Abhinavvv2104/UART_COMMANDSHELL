@@ -4,14 +4,14 @@
 
 A professional, non-blocking Command Line Interface (CLI) for the ESP32. This project utilizes a **Producer-Consumer architecture** to process serial data efficiently without freezing the CPU, making it suitable for real-time embedded applications.
 
-## 🚀 Project Overview
+##  Project Overview
 
 Standard UART polling blocks the CPU and wastes resources. This project solves that by decoupling hardware interrupts from application logic:
 1.  **ISR (Interrupt Service Routine):** Instantly captures incoming bytes.
 2.  **Ring Buffer:** Safely stores data in a circular queue (O(1) complexity).
 3.  **FreeRTOS Task:** Processes data asynchronously to control hardware.
 
-## 🛠️ Tech Stack & Features
+##  Tech Stack & Features
 
 * **Microcontroller:** ESP32 (WROOM)
 * **OS:** FreeRTOS (Tasks, Queues, Delays)
@@ -19,7 +19,7 @@ Standard UART polling blocks the CPU and wastes resources. This project solves t
 * **Peripherals:** UART0 (Serial), GPIO (LED Control)
 * **Performance:** Non-blocking I/O with Zero-Copy mechanisms
 
-## 🔌 Hardware Setup
+##  Hardware Setup
 
 This project controls an external LED via UART commands.
 
@@ -29,7 +29,7 @@ This project controls an external LED via UART commands.
 | **LED Cathode (-)** | **GND** (via 220Ω Resistor) |
 | **Console** | USB-to-UART (Micro-USB Cable) |
 
-## ⚡ How to Build & Run
+##  How to Build & Run
 
 1.  **Clone the Repository**
     ```bash
@@ -52,14 +52,14 @@ This project controls an external LED via UART commands.
     * `LED_ON`  → Turns the LED ON.
     * `LED_OFF` → Turns the LED OFF.
 
-## 🧠 Software Architecture
+##  Software Architecture
 
 ```mermaid
 graph LR
     PC[User Terminal] -- "LED_ON" --> UART[UART ISR]
     UART -- Event --> Task[Manager Task]
     Task -- Byte --> Buffer[Ring Buffer]
-    Buffer -- String --> App
+    Buffer -- String --> App```
 
 
 Developed by Abhinav | Powered by ESP-IDF & FreeRTOS
