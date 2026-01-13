@@ -20,19 +20,22 @@ void process_command(char *cmd) {
     if (strcmp(cmd, "LED_ON") == 0) {
         // Logic High (1) for Active High External LED
         gpio_set_level(LED_GPIO, 1); 
-        printf(">> SUCCESS: LED Turned ON\n");
+        printf(" SUCCESS: LED Turned ON\n");
     } 
     else if (strcmp(cmd, "LED_OFF") == 0) {
         // Logic Low (0) for Active High External LED
         gpio_set_level(LED_GPIO, 0); 
-        printf(">> SUCCESS: LED Turned OFF\n");
+        printf("SUCCESS: LED Turned OFF\n");
     }
     else {
-        printf(">> ERROR: Unknown Command. Try 'LED_ON' or 'LED_OFF'\n");
+        printf("ERROR: Unknown Command. Try 'LED_ON' or 'LED_OFF'\n");
     }
 }
 
 void app_main(void) {
+    // Disable buffering
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdout, NULL, _IONBF, 0);
     // 1. Hardware Setup
     gpio_reset_pin(LED_GPIO);
     gpio_set_direction(LED_GPIO, GPIO_MODE_OUTPUT);
